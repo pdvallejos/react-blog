@@ -1,4 +1,4 @@
-import  {useEffect} from 'react';
+// import  {useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,7 +9,8 @@ import 'firebase/firestore'
 // import {statusUser} from './action/actionLogin'
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-// import Navbar from './components/Navbar';
+import NavBar from './components/NavBar/NavBar';
+import Details from "./components/Details/Details";
 
 function App() {
   // const logueado = useSelector(state => state.active)
@@ -23,10 +24,11 @@ function App() {
   return (
       <Router>
           <div className="container-fluid">
-              {/* <Navbar /> */}
+              <NavBar />
               <Switch >
                   <Route path='/login' component={Login}/>
                   <Route exact path='/home' component={Home}/>
+                  <Route exact path='/Details/:id' component={Details}/>
               </Switch>
           </div>
       </Router>

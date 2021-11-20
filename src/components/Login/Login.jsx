@@ -42,8 +42,8 @@ export default function Login() {
 
     return (
         !userOn && (
-            <div className="container">
-                <h1>Login Account</h1>
+            <div className="container" >
+                <h1 className="text-black mt-3">Login Account</h1>
                 {error && <Error error={error}/>}
                 <Formik
                 initialValues={{email:'', password:''}}
