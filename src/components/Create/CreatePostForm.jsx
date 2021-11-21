@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-// function validate(form){
-//     let error ={};
-//     if(!form.title){
-//         error.title = "title is required";
-//     } else if (!form.body){
-//         error.body = "body is required";
-//     } 
-//     return error;
-// }
+function validate(form){
+    let error ={};
+    if(!form.title){
+        error.title = "title is required";
+    } else if (!form.body){
+        error.body = "body is required";
+    } 
+    return error;
+}
 
 export default function CreatePostForm() {
     const allpost = useSelector(state => state.login.post)
@@ -32,12 +32,12 @@ export default function CreatePostForm() {
             [e.target.name]: e.target.value,
             
         })
-        // setError(validate({
-        //     ...form,
-        //     [e.target.title]: e.target.value,
+        setError(validate({
+            ...form,
+            [e.target.name]: e.target.value,
   
-        // }))
-        // console.log(e)
+        }))
+        console.log(e)
     }
 
     // function handlechange(e){
@@ -74,18 +74,18 @@ export default function CreatePostForm() {
                     onChange={(e) => handleChange(e)}
                      />
                 </div>
-                        {/* {error.title &&(
+                        {error.title &&(
                             <p >{error.title}</p>
-                        )} */}
+                        )}
                 <div>
                     <input type="text"
                     name="body"
                     placeholder="Enter body"
                     onChange={(e) => handleChange(e)}
                      />
-                         {/* {error.body &&(
+                         {error.body &&(
                             <p >{error.body}</p>
-                        )} */}
+                        )}
                 </div>
                 <div>
                     <button  onSubmit={e => handleSubmit(e)} type="submit">Add</button>
