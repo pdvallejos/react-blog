@@ -18,9 +18,22 @@ export default function Reducer(state = initialState, action){
                 details: action.payload
             }
 
-        case 'REMOVE':{
-            return state.filter(e => e.id !== action.payload) 
+        case 'REMOVE_POST':{
+            const filtered = state.post.filter(post => post.id !== action.payload.id)
+            return {
+                ...state,
+                post: filtered
+            };
         }
+
+        case 'ADD_POST':
+           
+            return{
+                ...state,
+                post: [...state.post, action.payload]
+
+            }
+            
         default:
             return{
                 ...state

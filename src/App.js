@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import NavBar from './components/NavBar/NavBar';
 import Details from "./components/Details/Details";
+import CreatePostForm from './components/Create/CreatePostForm';
 
 function App() {
   // const logueado = useSelector(state => state.active)
@@ -29,6 +30,7 @@ function App() {
                   <Route path='/login' component={Login}/>
                   <Route exact path='/home' component={Home}/>
                   <Route exact path='/Details/:id' component={Details}/>
+                  <Route exact path={'/new'} component={CreatePostForm} />
               </Switch>
           </div>
       </Router>

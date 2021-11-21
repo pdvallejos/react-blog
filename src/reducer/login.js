@@ -1,5 +1,5 @@
 const dataInitial = {
-    active: false,
+    active: true,
     error: "",
 }
 
