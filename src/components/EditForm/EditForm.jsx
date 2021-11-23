@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { createPost } from '../../action/action';
-import { useDispatch } from 'react-redux'
+import { updatePost } from '../../action/action';
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router';
+import Details from '../Details/Details'
 
 function validate(form){
     let error ={};
@@ -13,13 +14,13 @@ function validate(form){
     return error;
 }
 
-export default function CreatePostForm() {
-
+export default function EditForm() {
+    let result = useSelector((state) => state.reducer.details)
     const [error, setError] = useState({})
     const dispatch = useDispatch();
     const history = useHistory()
     const [form, setForm] = useState({
-        id: 0,
+        id: result.id,
         title:"",
         body:""
     })
@@ -43,12 +44,13 @@ export default function CreatePostForm() {
 
     function handleSubmit(e){
         e.preventDefault()
-            dispatch(createPost(form))
+            dispatch(updatePost(form))
             setForm({})
             history.push('/home')
     }
 
     return (
+        <div>
         <div className="border" style={{width:"100%", padding:"2rem"}}>
             <form className="mb-3" controlId="formBasicEmail">
                 <div >
@@ -78,5 +80,16 @@ export default function CreatePostForm() {
                 </div>
             </form>
         </div>
+            
+        </div>
     )
 }
+
+
+
+
+
+
+   
+
+  

@@ -1,6 +1,4 @@
 import axios from 'axios'
-import { createDispatchHook } from 'react-redux'
-
 
 export function getPost(){
     return async function(dispatch){
@@ -36,7 +34,6 @@ export function removePost(id){
         }).catch((e) => console.log(e))
     }
 }
-var idx = 100
 
 export function created(data){
     return{
@@ -63,4 +60,20 @@ export function createPost(posted){
       
         }).catch((e) => console.log(e))
     }
+}
+
+export function updated(post) {
+    return {
+        type: "EDIT_POST",
+        payload: post,
+    };
+}
+
+export function updatePost(post, history) {
+    return (dispatch) => {
+        updatePost(post, post.id).then((reponse) => {
+            dispatch(updated(post));
+            history.push('/posts');
+        });
+    };
 }

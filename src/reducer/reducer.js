@@ -33,6 +33,18 @@ export default function Reducer(state = initialState, action){
                 post: [...state.post, action.payload]
 
             }
+        case "EDIT_POST":{
+            const posts = [...state.post];
+            const postIndex = posts.findIndex(
+                (p) => p.id === action.payload.id,
+            );
+    
+            posts[postIndex] = action.payload;
+            return {
+                ...state,
+                post: posts,
+            };
+        }
             
         default:
             return{
